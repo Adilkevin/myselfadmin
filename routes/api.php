@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::prefix('role')->namespace('Admin')->middleware([])->group(function ($router) {
+    $router->post('add-role-ajax', 'RoleController@createRole');
 });
+
+
+

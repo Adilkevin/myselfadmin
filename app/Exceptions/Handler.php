@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +47,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // 参数验证错误的异常
+        if ($exception instanceof ValidationException) {
+            return failed(array_first(array_collapse($exception->errors())));
+        }
+
         return parent::render($request, $exception);
     }
 }

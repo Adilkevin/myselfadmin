@@ -1,43 +1,125 @@
-<header class="navbar-wrapper">
-	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
-			<span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.0</span>
-			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
-			<nav class="nav navbar-nav">
-				<ul class="cl">
-					<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
-						<ul class="dropDown-menu menu radius box-shadow">
-							<li><a href="javascript:;" onclick="article_add('添加资讯','article-add.html')"><i class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
-							<li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')"><i class="Hui-iconfont">&#xe613;</i> 图片</a></li>
-							<li><a href="javascript:;" onclick="product_add('添加资讯','product-add.html')"><i class="Hui-iconfont">&#xe620;</i> 产品</a></li>
-							<li><a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
-				<ul class="cl">
-					<li>超级管理员</li>
-					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">@if (isset($admin_name)) {{ $admin_name }} @endif <i class="Hui-iconfont">&#xe6d5;</i></a>
-						<ul class="dropDown-menu menu radius box-shadow">
-							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-							<li><a href="#">切换账户</a></li>
-							<li><a href="{{ route('logout') }}">退出</a></li>
-						</ul>
-					</li>
-					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
-					<li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
-						<ul class="dropDown-menu menu radius box-shadow">
-							<li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
-							<li><a href="javascript:;" data-val="blue" title="蓝色">蓝色</a></li>
-							<li><a href="javascript:;" data-val="green" title="绿色">绿色</a></li>
-							<li><a href="javascript:;" data-val="red" title="红色">红色</a></li>
-							<li><a href="javascript:;" data-val="yellow" title="黄色">黄色</a></li>
-							<li><a href="javascript:;" data-val="orange" title="橙色">橙色</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
+<div class="row border-bottom">
+	<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+		<div class="navbar-header">
+			<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+			<form role="search" class="navbar-form-custom" action="search_results.html">
+				<div class="form-group">
+					<input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+				</div>
+			</form>
 		</div>
-	</div>
-</header>
+		<ul class="nav navbar-top-links navbar-right">
+			<li>
+				<span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+					<i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+				</a>
+				<ul class="dropdown-menu dropdown-messages">
+					<li>
+						<div class="dropdown-messages-box">
+							<a href="profile.html" class="pull-left">
+								<img alt="image" class="img-circle" src="images/a7.jpg">
+							</a>
+							<div class="media-body">
+								<small class="pull-right">46h ago</small>
+								<strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+								<small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+							</div>
+						</div>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<div class="dropdown-messages-box">
+							<a href="profile.html" class="pull-left">
+								<img alt="image" class="img-circle" src="images/a4.jpg">
+							</a>
+							<div class="media-body ">
+								<small class="pull-right text-navy">5h ago</small>
+								<strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+								<small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+							</div>
+						</div>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<div class="dropdown-messages-box">
+							<a href="profile.html" class="pull-left">
+								<img alt="image" class="img-circle" src="images/profile.jpg">
+							</a>
+							<div class="media-body ">
+								<small class="pull-right">23h ago</small>
+								<strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+								<small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+							</div>
+						</div>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<div class="text-center link-block">
+							<a href="mailbox.html">
+								<i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+					<i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+				</a>
+				<ul class="dropdown-menu dropdown-alerts">
+					<li>
+						<a href="mailbox.html">
+							<div>
+								<i class="fa fa-envelope fa-fw"></i> You have 16 messages
+								<span class="pull-right text-muted small">4 minutes ago</span>
+							</div>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="profile.html">
+							<div>
+								<i class="fa fa-twitter fa-fw"></i> 3 New Followers
+								<span class="pull-right text-muted small">12 minutes ago</span>
+							</div>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="grid_options.html">
+							<div>
+								<i class="fa fa-upload fa-fw"></i> Server Rebooted
+								<span class="pull-right text-muted small">4 minutes ago</span>
+							</div>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<div class="text-center link-block">
+							<a href="notifications.html">
+								<strong>See All Alerts</strong>
+								<i class="fa fa-angle-right"></i>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</li>
+
+
+			<li>
+				<a href="login.html">
+					<i class="fa fa-sign-out"></i> Log out
+				</a>
+			</li>
+			<li>
+				<a class="right-sidebar-toggle">
+					<i class="fa fa-tasks"></i>
+				</a>
+			</li>
+		</ul>
+
+	</nav>
+</div>

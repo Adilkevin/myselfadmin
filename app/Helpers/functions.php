@@ -25,3 +25,21 @@ function failed($message, $data = null, $status = 0)
 {
     return respond($status, $message, $data);
 }
+
+function return404()
+{
+    return 111;
+}
+
+/**
+ * 获取当前控制器与方法
+ *
+ * @return array
+ */
+function getCurrentAction()
+{
+    $action = \Route::current()->getActionName();
+    list($class, $method) = explode('@', $action);
+
+    return ['controller' => $class, 'method' => $method];
+}

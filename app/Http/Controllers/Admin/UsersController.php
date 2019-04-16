@@ -73,13 +73,17 @@ class UsersController extends AdminController
     protected function validateLogin(Request $request)
     {
         $this->validate($request, [
-            $this->username() => 'required|string',
+            $this->username() => 'required',
             'password' => 'required|string',
             'captcha' => 'required|captcha',
         ],[
+            $this->username() . '.required' => '用户名必填',
+            'password.required' => '请填写密码',
             'captcha.required' => '请填写验证码',
             'captcha.captcha' => '验证码错误',
         ]);
+
+
     }
 
 

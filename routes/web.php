@@ -11,20 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 //Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', function () {
-    return redirect('/admin/login');
-});
+Route::get('/admin', 'Admin\IndexController@home');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($route) {
     Route::get('login', 'UsersController@showLoginForm')->name('login');
+//    Route::get('login', 'UsersController@showLoginForm')->name('admin/login');
+
     Route::post('login', 'UsersController@login');
     Route::get('logout', 'UsersController@logout')->name('logout');
     Route::any('myselfregister', 'RegisterController@register')->name('myselfregister');
@@ -33,9 +33,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($route) {
 
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'isadmin']], function ($route) {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => []], function ($route) {
+//    $route->get('/', 'IndexController@home');
+
     $route->get('home', 'IndexController@home');
-    $route->get('index', 'IndexController@index');
 
     $route->get('getadmins', 'UsersController@adminsList');
 
@@ -65,12 +66,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     $route->get('query_role_list', 'RoleController@roleList');
 
 
+    //后台首页
+    $route->get('index', 'IndexController@home');
+
+    //角色列表
+    $route->get('role-list', 'RoleController@showRoleList');
 
 
 
-    $route::group([], function ($rout) {
-        $rout->any('adminsForgetpwd', 'UsersController@adminsForgetpwd');
-    });
+
+
+//    $route::group([], function ($rout) {
+//        $rout->any('adminsForgetpwd', 'UsersController@adminsForgetpwd');
+//    });
 });
 
 

@@ -15,11 +15,11 @@ class IndexController extends Controller
     public function home(Request $request)
     {
         $data = array();
-        $user = $request->user();
+//        $user = $request->user();
 
-        $data = array(
-            'admin_name' => $user->name
-        );
+//        $data = array(
+//            'admin_name' => $user->name
+//        );
 
         return view('admin.index.home', $data);
     }
